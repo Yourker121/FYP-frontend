@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://oleaginous-larval-serafina.ngrok-free.dev",
+  baseURL: "https://fyp-backend-production.up.railway.app/api/chat",
 });
 
 API.interceptors.request.use((req) => {
