@@ -47,13 +47,16 @@ export default function Navbar() {
     }
 
     try {
-      await axios.post("http://localhost:5000/api/contact", {
-        firstName: form.firstName,
-        lastName: form.lastName,
-        mobile: form.mobile,
-        email: form.email,
-        message: form.message,
-      });
+      await axios.post(
+        "https://fyp-backend-production-ed23.up.railway.app/api/contact",
+        {
+          firstName: form.firstName,
+          lastName: form.lastName,
+          mobile: form.mobile,
+          email: form.email,
+          message: form.message,
+        }
+      );
 
       setSubmitted(true);
       setTimeout(() => {

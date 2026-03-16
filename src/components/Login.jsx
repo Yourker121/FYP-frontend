@@ -13,7 +13,7 @@ export default function Login() {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        "https://fyp-backend-production-ed23.up.railway.app/api/auth/login",
         form
       );
 
@@ -45,7 +45,7 @@ export default function Login() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/forgot-password",
+        "https://fyp-backend-production-ed23.up.railway.app/api/auth/forgot-password",
         { email: forgotEmail }
       );
       toast.success(res.data.message);

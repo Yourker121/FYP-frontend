@@ -13,7 +13,7 @@ function StarRating({ appointmentId, doctorId, onRated }) {
   const submitRating = async (rating) => {
     try {
       await axios.post(
-        "http://localhost:5000/api/reviews",
+        "https:fyp-backend-production-ed23.up.railway.app/api/reviews",
         { doctorId, appointmentId, rating },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -84,7 +84,9 @@ export default function PatientDashboard() {
 
   const fetchDoctors = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/users/doctors");
+      const res = await axios.get(
+        "https://fyp-backend-production-ed23.up.railway.app/api/users/doctors"
+      );
       setDoctors(res.data);
     } catch (err) {
       toast.error("Error fetching doctors");
@@ -94,7 +96,7 @@ export default function PatientDashboard() {
   const fetchAppointments = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/appointments/patient",
+        "https://fyp-backend-production-ed23.up.railway.app/api/appointments/patient",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -106,7 +108,7 @@ export default function PatientDashboard() {
         if (app.status === "completed") {
           try {
             const rev = await axios.get(
-              `http://localhost:5000/api/reviews/check/${app._id}`,
+              `https://fyp-backend-production-ed23.up.railway.app/api/reviews/check/${app._id}`,
               { headers: { Authorization: `Bearer ${token}` } }
             );
             reviewChecks[app._id] = rev.data.reviewed;
@@ -129,9 +131,13 @@ export default function PatientDashboard() {
     }
 
     try {
-      await axios.post("http://localhost:5000/api/appointments", form, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.post(
+        "https://fyp-backend-production-ed23.up.railway.app/api/appointments",
+        form,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       toast.success("Appointment booked successfully!");
       setForm({ doctorId: "", date: "", time: "", reason: "" });
       fetchAppointments();

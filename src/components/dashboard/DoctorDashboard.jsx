@@ -17,7 +17,7 @@ export default function DoctorDashboard() {
   const fetchAppointments = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/appointments/doctor",
+        "https://fyp-backend-production-ed23.up.railway.app/api/appointments/doctor",
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setAppointments(res.data);
@@ -29,7 +29,7 @@ export default function DoctorDashboard() {
   const handleStatusUpdate = async (id, status) => {
     try {
       await axios.patch(
-        `http://localhost:5000/api/appointments/${id}/status`,
+        `https://fyp-backend-production-ed23.up.railway.app/api/appointments/${id}/status`,
         { status },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -43,7 +43,7 @@ export default function DoctorDashboard() {
   const handlePaymentVerification = async (id, action) => {
     try {
       await axios.patch(
-        `http://localhost:5000/api/appointments/${id}/verify-payment`,
+        `https://fyp-backend-production-ed23.up.railway.app/api/appointments/${id}/verify-payment`,
         { action },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -252,7 +252,7 @@ export default function DoctorDashboard() {
                             Screenshot:
                           </span>{" "}
                           <a
-                            href={`http://localhost:5000/${app.paymentScreenshot}`}
+                            href={`https://fyp-backend-production-ed23.up.railway.app/${app.paymentScreenshot}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-blue-600 font-semibold hover:underline"

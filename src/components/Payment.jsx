@@ -23,7 +23,7 @@ const Payment = ({ appointmentId, onPaymentDone }) => {
       if (file) formData.append("screenshot", file);
 
       await axios.patch(
-        `http://localhost:5000/api/appointments/${appointmentId}/pay`,
+        `https://fyp-backend-production-ed23.up.railway.app/api/appointments/${appointmentId}/pay`,
         formData,
         {
           headers: {

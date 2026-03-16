@@ -10,15 +10,17 @@ export default function AdminDashboard() {
 
   const fetchData = async (type) => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/admin/${type}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await axios.get(
+        `https://fyp-backend-production-ed23.up.railway.app/api/admin/${type}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       setData(res.data);
     } catch (err) {
       toast.error("Error fetching data");
     }
   };
-
   useEffect(() => {
     fetchData(activeTab);
   }, [activeTab]);
@@ -27,9 +29,12 @@ export default function AdminDashboard() {
     if (!window.confirm("Are you sure you want to delete?")) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/admin/${activeTab}/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.delete(
+        `https://fyp-backend-production-ed23.up.railway.app/api/admin/${activeTab}/${id}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       toast.success("Deleted Successfully");
       fetchData(activeTab);
       if (selectedItem?._id === id) setSelectedItem(null);
@@ -41,7 +46,7 @@ export default function AdminDashboard() {
   const updateStatus = async (id, status) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/admin/appointments/${id}`,
+        `https://fyp-backend-production-ed23.up.railway.app/api/admin/appointments/${id}`,
         { status },
         { headers: { Authorization: `Bearer ${token}` } }
       );

@@ -36,7 +36,7 @@ export default function Chatbot({ onClose }) {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/chatbot",
+        "https://fyp-backend-production-ed23.up.railway.app/api/chatbot",
         { message: userText },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -135,7 +135,6 @@ export default function Chatbot({ onClose }) {
         <div ref={chatEndRef} />
       </div>
 
-      {/* Input */}
       <div className="p-3 bg-white border-t border-slate-200 flex gap-2">
         <input
           type="text"
